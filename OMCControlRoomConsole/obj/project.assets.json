@@ -8,35 +8,29 @@
     ".NETCoreApp,Version=v3.1": []
   },
   "packageFolders": {
-    "C:\\Users\\Khalid\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "/Users/khalid/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Visual Studio\\OMC Control Room\\OMCControlRoomConsole\\OMCControlRoomConsole.csproj",
+      "projectUniqueName": "/Users/khalid/Projects/OMCControlRoom/OMCControlRoomConsole/OMCControlRoomConsole.csproj",
       "projectName": "OMCControlRoomConsole",
-      "projectPath": "D:\\Visual Studio\\OMC Control Room\\OMCControlRoomConsole\\OMCControlRoomConsole.csproj",
-      "packagesPath": "C:\\Users\\Khalid\\.nuget\\packages\\",
-      "outputPath": "D:\\Visual Studio\\OMC Control Room\\OMCControlRoomConsole\\obj\\",
+      "projectPath": "/Users/khalid/Projects/OMCControlRoom/OMCControlRoomConsole/OMCControlRoomConsole.csproj",
+      "packagesPath": "/Users/khalid/.nuget/packages/",
+      "outputPath": "/Users/khalid/Projects/OMCControlRoom/OMCControlRoomConsole/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Khalid\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "/Users/khalid/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {}
         }
       },
@@ -48,6 +42,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -63,7 +58,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/5.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

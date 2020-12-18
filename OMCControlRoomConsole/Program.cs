@@ -7,6 +7,7 @@ namespace OMCControlRoomConsole
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello from MAC");
             Console.ReadLine();
         }
     }
