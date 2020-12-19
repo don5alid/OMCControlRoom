@@ -1,6 +1,6 @@
 ﻿namespace OMCControlRoomApplication
 {
-    partial class Form1
+    partial class MainConnect
     {
         /// <summary>
         /// Required designer variable.

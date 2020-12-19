@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "A7vhlquo71r0w60GlQssg2Mi6HXkGZaXBwZmPYpXiq+ckb5VsAjziFGle3XBR2v7XLKiJJBLd28rrOa3Qx8JQQ==",
+  "dgSpecHash": "pr+YAdEmhKbudUqN0BTs1APElFYBag08EqpiFdloVWNDKa1zJPzoYSFCz/TxcgvdEfYzgpxyXCtxTnAKvPRBaA==",
   "success": true,
-  "projectFilePath": "/Users/khalid/Projects/OMCControlRoom/OMCControlRoomConsole/OMCControlRoomConsole.csproj",
+  "projectFilePath": "D:\\Visual Studio\\OMC Control Room\\OMCControlRoomConsole\\OMCControlRoomConsole.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
