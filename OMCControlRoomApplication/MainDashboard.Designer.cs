@@ -51,7 +51,6 @@
             this.Name = "MainDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MainDashboard";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainDashboard_KeyDown);
             this.Resize += new System.EventHandler(this.MainDashboard_Resize);
             this.ResumeLayout(false);
 

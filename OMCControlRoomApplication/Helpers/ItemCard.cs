@@ -14,31 +14,24 @@ namespace OMCControlRoomApplication.Helpers
     public partial class ItemCard : UserControl
     {
         private const int MIN_WIDTH= 200;
-        private int index=0;
-        public void SetNumber(int Number)
+        private int ItemId;
+        private ColorProfile cp;
+        private bool ShouldBlink;
+        private DateTime LastUpdate;
+        private ColorsCode CurrentColorCode;
+         
+     
+        public ItemCard(int ItemId )
         {
-            index = Number / 10;
-        }
-        public ItemCard( )
-        {
-            
+            this.ItemId = ItemId;
             InitializeComponent();
+            RetriveDate();
+      
 
 
-            Task.Factory.StartNew(() => RetriveDate() );
-
-
-         var t = new System.Windows.Forms.Timer();
-            t.Interval = 1000;
-            t.Tick += T_Tick;
-            t.Start();
+         
         }
-        private static Random rand = new Random();
-        public static int RandomNumber(int min, int max)
-        {
-            lock (new Object())
-                return rand.Next(min, max);
-        }
+       
 
         private void WriteTextSafe(string text)
         {
@@ -60,9 +53,60 @@ namespace OMCControlRoomApplication.Helpers
 
         private void RetriveDate()
         {
-            Thread.Sleep(RandomNumber(3000, 10000));
-            SetText("Loaded");
+            var data = new ControlDataContext();
+            var item = data.GetItem(ItemId);
+
+
+            //Thread.Sleep(OMCControl.RandomNumber(1000, 6000));
+
+            SetCode(item.EnglishCode);
+
+              SetType(item.ItemCategory != null? item.ItemCategory.EnglishName: "-");
+            SetCity(item.Project!=null && item.Project.City!=null? item.Project.City.EnglishName: "-");
+            SetProject(item.Project!=null? item.Project.EnglishName : "-");
+            SetLastActivity(item.ChangedTime.Value );
+            SetName(item.EnglishName);
+
+
+            SetColors(item.ChangedTime.Value);
+            
              
+        }
+
+        enum TimeUnits { YEAR= 483840, HALFYEAR= 241920, QUARTER= 120960, MONTH=40320 , TWOWEEKS=20160, ONEWEEK=10080, THREEDAYS=4320, DAY=1440, HALFDAY=720, SIXHOURS = 360, THREEHOURS = 180, HOUR=60 }
+        private void SetColors(DateTime ChangedTime)
+        {
+            
+
+
+            double Minutes = (OMCControl.LocalTime - ChangedTime).TotalMinutes;
+         
+            if (Minutes < (int)TimeUnits.SIXHOURS)
+               CurrentColorCode = ColorsCode.ACTIVE ;
+            else
+                if (Minutes < (int)TimeUnits.DAY)
+                CurrentColorCode  = ColorsCode.IDLE ;
+            else
+                if (Minutes < (int)TimeUnits.THREEDAYS)
+                CurrentColorCode   =ColorsCode.DEAD ;
+            else
+
+
+                CurrentColorCode =  ColorsCode.DISACTIVE ;
+
+            cp = GetColorProfile(CurrentColorCode);
+
+            lytMain.BackColor = lytInner_1.BackColor = btnMainName.BackColor=  cp.BackColor;
+            lytMain.ForeColor = lytInner_1.ForeColor = btnMainName.ForeColor = cp.ForeColor;
+
+            LastUpdate = OMCControl.LocalTime;
+
+
+                 ShouldBlink = CurrentColorCode == ColorsCode.DEAD || CurrentColorCode == ColorsCode.IDLE|| CurrentColorCode== ColorsCode.DISACTIVE;
+
+            
+                BlinkTimer.Enabled = ShouldBlink;
+
         }
 
         public void CalculateWidth(int SuperWidth)
@@ -71,8 +115,11 @@ namespace OMCControlRoomApplication.Helpers
 
         }
 
+        public void SetName(string Text) {
+            btnSubName.Text= Text;
+        }
         public void SetCode(string Text) {
-            btnMainName.Text=btnSubName.Text = Text;
+            btnMainName.Text= Text;
 
         }
         public void SetCity(string Text)
@@ -91,9 +138,9 @@ namespace OMCControlRoomApplication.Helpers
         {
             btnMap.Text = Text;
         }
-        public void SetLastActivity(string Text)
+        public void SetLastActivity(DateTime DateTime)
         {
-            lblLastActivity.Text = Text;
+            lblLastActivity.Text = string.Format("{0}", DateTime.ToString("yy-MM-dd@HH:mm"));
         }
         public void SetStatus(string Text)
         {
@@ -104,18 +151,69 @@ namespace OMCControlRoomApplication.Helpers
 
         private void T_Tick(object sender, EventArgs e)
         {
-            btnSubName.Text = DateTime.Now.Second.ToString();
+            RetriveDate();
+            
             
         }
 
-   
-          
+ 
+        private ColorProfile GetColorProfile(ColorsCode ColorsCode)
+        {
+            ColorProfile cp = new ColorProfile();
+
+            switch (ColorsCode)
+            {
+                case ColorsCode.ACTIVE:
+                    cp.ForeColor = Color.DarkGreen;
+                    cp.BackColor = Color.LightGreen;
+                    break;
+
+                case ColorsCode.DEAD:
+                    cp.ForeColor = Color.DarkRed;
+                    cp.BackColor = Color.Red;
+                    break;
+
+                case ColorsCode.IDLE:
+                    cp.ForeColor = Color.DarkOrange;
+                    cp.BackColor = Color.LightYellow;
+                    break;
+
+                case ColorsCode.DISACTIVE:
+                    cp.ForeColor = Color.White;
+                    cp.BackColor = Color.Black;
+                    break;
+
+            }
+
+            return cp;
+
+        }
+
+
 
         private void ToggleDetails_Click(object sender, EventArgs e)
         {
             lytMain.Visible = !lytMain.Visible;
             btnSubName.Visible = lytMain.Visible;
             btnMainName.Visible = !btnSubName.Visible;
+        }
+
+        private void BlinkTimer_Tick(object sender, EventArgs e)
+        {
+            if (lytInner_1.ForeColor== cp.ForeColor)
+            {
+                lytMain.ForeColor = lytInner_1.ForeColor = btnMainName.ForeColor = cp.BackColor;
+                lytMain.BackColor = lytInner_1.BackColor = btnMainName.BackColor = cp.ForeColor;
+
+
+            }
+            else
+            {
+                lytMain.BackColor = lytInner_1.BackColor = btnMainName.BackColor = cp.BackColor;
+                lytMain.ForeColor = lytInner_1.ForeColor = btnMainName.ForeColor = cp.ForeColor;
+
+
+            }
         }
     }
 }

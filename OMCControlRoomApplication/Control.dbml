@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Class="ControlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=Control;Integrated Security=True" SettingsObjectName="OMCControlRoomApplication.Properties.Settings" SettingsPropertyName="ControlConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Cities" Member="Cities">
+    <Type Name="City">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RegionId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EnglishName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="City_Project" Member="Projects" ThisKey="Id" OtherKey="CityId" Type="Project" />
+      <Association Name="User_City" Member="User1" ThisKey="AddedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_City1" Member="User" ThisKey="ChangedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="Country_City" Member="Country" ThisKey="CountryId" OtherKey="Id" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EnglishName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="User_City" Member="Cities1" ThisKey="Id" OtherKey="AddedBy" Type="City" />
+      <Association Name="User_City1" Member="Cities" ThisKey="Id" OtherKey="ChangedBy" Type="City" />
+      <Association Name="User_User" Member="Users1" ThisKey="Id" OtherKey="AddedBy" Type="User" />
+      <Association Name="User_User1" Member="Users" ThisKey="Id" OtherKey="ChangedBy" Type="User" />
+      <Association Name="User_Country" Member="Countries1" ThisKey="Id" OtherKey="AddedBy" Type="Country" />
+      <Association Name="User_Country1" Member="Countries" ThisKey="Id" OtherKey="ChangedBy" Type="Country" />
+      <Association Name="User_ItemCategory" Member="ItemCategories1" ThisKey="Id" OtherKey="AddedBy" Type="ItemCategory" />
+      <Association Name="User_ItemCategory1" Member="ItemCategories" ThisKey="Id" OtherKey="ChangedBy" Type="ItemCategory" />
+      <Association Name="User_Item" Member="Items1" ThisKey="Id" OtherKey="AddedBy" Type="Item" />
+      <Association Name="User_Item1" Member="Items" ThisKey="Id" OtherKey="ChangedBy" Type="Item" />
+      <Association Name="User_Project" Member="Projects1" ThisKey="Id" OtherKey="AddedBy" Type="Project" />
+      <Association Name="User_Project1" Member="Projects" ThisKey="Id" OtherKey="ChangedBy" Type="Project" />
+      <Association Name="User_Region" Member="Regions1" ThisKey="Id" OtherKey="AddedBy" Type="Region" />
+      <Association Name="User_Region1" Member="Regions" ThisKey="Id" OtherKey="ChangedBy" Type="Region" />
+      <Association Name="User_User" Member="User2" ThisKey="AddedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_User1" Member="User1" ThisKey="ChangedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Countries" Member="Countries">
+    <Type Name="Country">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EnglishName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Country_City" Member="Cities" ThisKey="Id" OtherKey="CountryId" Type="City" />
+      <Association Name="Country_Project" Member="Projects" ThisKey="Id" OtherKey="CountryId" Type="Project" />
+      <Association Name="Country_Region" Member="Regions" ThisKey="Id" OtherKey="CountryId" Type="Region" />
+      <Association Name="User_Country" Member="User1" ThisKey="AddedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_Country1" Member="User" ThisKey="ChangedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ItemCategories" Member="ItemCategories">
+    <Type Name="ItemCategory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="EnglishName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="ItemCategory_Item" Member="Items" ThisKey="Id" OtherKey="CategoryId" Type="Item" />
+      <Association Name="User_ItemCategory" Member="User1" ThisKey="AddedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_ItemCategory1" Member="User" ThisKey="ChangedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Items" Member="Items">
+    <Type Name="Item">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CategoryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ProjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PrimaryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SecondaryId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnglishName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EnglishCode" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedCode" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="User_Item" Member="User1" ThisKey="AddedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_Item1" Member="User" ThisKey="ChangedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="ItemCategory_Item" Member="ItemCategory" ThisKey="CategoryId" OtherKey="Id" Type="ItemCategory" IsForeignKey="true" />
+      <Association Name="Project_Item" Member="Project" ThisKey="ProjectId" OtherKey="Id" Type="Project" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projects" Member="Projects">
+    <Type Name="Project">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RegionId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CityId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="EnglishName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="EnglishShort" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedShort" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Project_Item" Member="Items" ThisKey="Id" OtherKey="ProjectId" Type="Item" />
+      <Association Name="User_Project" Member="User1" ThisKey="AddedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_Project1" Member="User" ThisKey="ChangedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="City_Project" Member="City" ThisKey="CityId" OtherKey="Id" Type="City" IsForeignKey="true" />
+      <Association Name="Country_Project" Member="Country" ThisKey="CountryId" OtherKey="Id" Type="Country" IsForeignKey="true" />
+      <Association Name="Region_Project" Member="Region" ThisKey="RegionId" OtherKey="Id" Type="Region" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Regions" Member="Regions">
+    <Type Name="Region">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CountryId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="EnglishName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TranslatedName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="ValidFrom" Type="System.DateTime" DbType="DateTime2 NOT NULL" CanBeNull="false" />
+      <Column Name="AddedBy" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChangedTime" Type="System.DateTime" DbType="DateTime2" CanBeNull="true" />
+      <Column Name="ChangedBy" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="StatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RowVersion" Type="System.Data.Linq.Binary" DbType="rowversion NOT NULL" CanBeNull="false" IsVersion="true" />
+      <Association Name="Region_Project" Member="Projects" ThisKey="Id" OtherKey="RegionId" Type="Project" />
+      <Association Name="User_Region" Member="User1" ThisKey="AddedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="User_Region1" Member="User" ThisKey="ChangedBy" OtherKey="Id" Type="User" IsForeignKey="true" />
+      <Association Name="Country_Region" Member="Country" ThisKey="CountryId" OtherKey="Id" Type="Country" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

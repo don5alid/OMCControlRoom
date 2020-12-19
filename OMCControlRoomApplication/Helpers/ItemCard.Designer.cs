@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lytMain = new System.Windows.Forms.TableLayoutPanel();
             this.lytInner_1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,6 +45,8 @@
             this.btnMap = new System.Windows.Forms.Button();
             this.btnSubName = new System.Windows.Forms.Button();
             this.btnMainName = new System.Windows.Forms.Button();
+            this.ItemTimer = new System.Windows.Forms.Timer(this.components);
+            this.BlinkTimer = new System.Windows.Forms.Timer(this.components);
             this.lytMain.SuspendLayout();
             this.lytInner_1.SuspendLayout();
             this.SuspendLayout();
@@ -238,7 +241,7 @@
             // btnSubName
             // 
             this.btnSubName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSubName.Font = new System.Drawing.Font("Tahoma", 30F, System.Drawing.FontStyle.Bold);
+            this.btnSubName.Font = new System.Drawing.Font("Tahoma", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSubName.Location = new System.Drawing.Point(3, 3);
             this.btnSubName.Name = "btnSubName";
             this.btnSubName.Size = new System.Drawing.Size(388, 70);
@@ -251,7 +254,7 @@
             // 
             this.btnMainName.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnMainName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMainName.Font = new System.Drawing.Font("Tahoma", 50F, System.Drawing.FontStyle.Bold);
+            this.btnMainName.Font = new System.Drawing.Font("Tahoma", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMainName.Location = new System.Drawing.Point(0, 0);
             this.btnMainName.Name = "btnMainName";
             this.btnMainName.Size = new System.Drawing.Size(394, 191);
@@ -259,6 +262,17 @@
             this.btnMainName.Text = "button2";
             this.btnMainName.UseVisualStyleBackColor = true;
             this.btnMainName.Click += new System.EventHandler(this.ToggleDetails_Click);
+            // 
+            // ItemTimer
+            // 
+            this.ItemTimer.Enabled = true;
+            this.ItemTimer.Interval = 10000;
+            this.ItemTimer.Tick += new System.EventHandler(this.T_Tick);
+            // 
+            // BlinkTimer
+            // 
+            this.BlinkTimer.Interval = 500;
+            this.BlinkTimer.Tick += new System.EventHandler(this.BlinkTimer_Tick);
             // 
             // ItemCard
             // 
@@ -294,5 +308,7 @@
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.Label lblType;
         private System.Windows.Forms.Button btnMap;
+        private System.Windows.Forms.Timer ItemTimer;
+        private System.Windows.Forms.Timer BlinkTimer;
     }
 }

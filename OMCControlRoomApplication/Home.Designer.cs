@@ -38,6 +38,7 @@
             this.LogoutMainMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMainMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SettingsMainMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.SettingMainMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.ConnectButton = new System.Windows.Forms.ToolStripButton();
             this.DisconnectButton = new System.Windows.Forms.ToolStripButton();
@@ -48,7 +49,6 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.SettingMainMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -84,7 +84,7 @@
             this.ConnectMainMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.ConnectMainMenuItem.Name = "ConnectMainMenuItem";
             this.ConnectMainMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F1)));
-            this.ConnectMainMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ConnectMainMenuItem.Size = new System.Drawing.Size(179, 22);
             this.ConnectMainMenuItem.Text = "&Connect";
             this.ConnectMainMenuItem.Click += new System.EventHandler(this.ConnectMainMenuItem_Click);
             // 
@@ -94,21 +94,21 @@
             this.DisconnectMainMenuItem.ImageTransparentColor = System.Drawing.Color.Black;
             this.DisconnectMainMenuItem.Name = "DisconnectMainMenuItem";
             this.DisconnectMainMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F2)));
-            this.DisconnectMainMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.DisconnectMainMenuItem.Size = new System.Drawing.Size(179, 22);
             this.DisconnectMainMenuItem.Text = "&Disconnect";
             this.DisconnectMainMenuItem.Click += new System.EventHandler(this.DisconnectMainMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(176, 6);
             // 
             // LogoutMainMenuItem
             // 
             this.LogoutMainMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("LogoutMainMenuItem.Image")));
             this.LogoutMainMenuItem.Name = "LogoutMainMenuItem";
             this.LogoutMainMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F3)));
-            this.LogoutMainMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.LogoutMainMenuItem.Size = new System.Drawing.Size(179, 22);
             this.LogoutMainMenuItem.Text = "Log&out";
             this.LogoutMainMenuItem.Click += new System.EventHandler(this.LogoutMainMenuItem_Click);
             // 
@@ -117,7 +117,7 @@
             this.ExitMainMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("ExitMainMenuItem.Image")));
             this.ExitMainMenuItem.Name = "ExitMainMenuItem";
             this.ExitMainMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.ExitMainMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitMainMenuItem.Size = new System.Drawing.Size(179, 22);
             this.ExitMainMenuItem.Text = "&Exit";
             this.ExitMainMenuItem.Click += new System.EventHandler(this.ExitMainMenuItem_Click);
             // 
@@ -128,6 +128,13 @@
             this.SettingsMainMenu.Name = "SettingsMainMenu";
             this.SettingsMainMenu.Size = new System.Drawing.Size(61, 20);
             this.SettingsMainMenu.Text = "&Options";
+            // 
+            // SettingMainMenuItem
+            // 
+            this.SettingMainMenuItem.Name = "SettingMainMenuItem";
+            this.SettingMainMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.SettingMainMenuItem.Text = "&Settings";
+            this.SettingMainMenuItem.Click += new System.EventHandler(this.SettingMainMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -215,13 +222,6 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(39, 17);
             this.toolStripStatusLabel.Text = "Ready";
             // 
-            // SettingMainMenuItem
-            // 
-            this.SettingMainMenuItem.Name = "SettingMainMenuItem";
-            this.SettingMainMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.SettingMainMenuItem.Text = "&Settings";
-            this.SettingMainMenuItem.Click += new System.EventHandler(this.SettingMainMenuItem_Click);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,8 +232,6 @@
             this.Controls.Add(this.menuStrip);
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "Home";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
